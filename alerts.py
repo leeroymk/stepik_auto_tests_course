@@ -5,7 +5,6 @@ import math
 
 
 try:
-    print('ПОГНАЛИ НАХУЙ!')
     url = 'http://suninjuly.github.io/alert_accept.html'
     browser = webdriver.Chrome()
     browser.get(url)
@@ -15,13 +14,11 @@ try:
     confirm_button.accept()
     x_value = browser.find_element(By.ID, 'input_value')
     x = x_value.text
-    print(f"X = {x}")
 
     def calc(x: int) -> int:
         return math.log(abs(12*math.sin(x)))
 
     y = calc(int(x))
-    print(f"Y = {y}")
 
     answer_bar = browser.find_element(By.ID, "answer")
     answer_bar.send_keys(y)
@@ -32,7 +29,6 @@ try:
     final = result.text
     browser.switch_to.alert.accept()
 finally:
-    print('DONE')
     ans = final.split()
     print(ans[-1])
     browser.quit()
